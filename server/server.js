@@ -1,47 +1,38 @@
+// ======================================
+// Coffee Shop Backend Server
+// ======================================
+
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 
+
+// Load Environment Variables
 dotenv.config();
 
+
+// Create Express App
 const app = express();
 
 
-// ===============================
-// CORS FIX
-// ===============================
 
-const allowedOrigins = [
-    "http://localhost:5500",
-    "http://127.0.0.1:5500",
-    "https://coffee-co-coffee.netlify.app"
-];
-
+// ======================================
+// CORS CONFIGURATION
+// ======================================
 
 app.use(cors({
 
-    origin: function(origin, callback){
+    origin: [
+        "http://localhost:5500",
+        "http://127.0.0.1:5500",
+        "https://coffee-co-coffee.netlify.app"
+    ],
 
-        // Allow requests without origin (Postman, mobile apps)
-        if(!origin){
-            return callback(null,true);
-        }
+    credentials: true,
 
-
-        if(allowedOrigins.includes(origin)){
-            return callback(null,true);
-        }
-
-
-        return callback(new Error("Not allowed by CORS"));
-
-    },
-
-    credentials:true,
-
-    methods:[
+    methods: [
         "GET",
         "POST",
         "PUT",
@@ -49,7 +40,7 @@ app.use(cors({
         "OPTIONS"
     ],
 
-    allowedHeaders:[
+    allowedHeaders: [
         "Content-Type",
         "Authorization"
     ]
@@ -57,13 +48,15 @@ app.use(cors({
 }));
 
 
-// Express 5 preflight
-app.options("/{*any}", cors());
+
+// Handle OPTIONS Request
+app.options("*", cors());
 
 
-// ===============================
-// Middleware
-// ===============================
+
+// ======================================
+// MIDDLEWARES
+// ======================================
 
 app.use(express.json());
 
@@ -75,81 +68,126 @@ app.use(cookieParser());
 
 
 
-// ===============================
-// MongoDB
-// ===============================
+// ======================================
+// DATABASE CONNECTION
+// ======================================
 
 mongoose.connect(process.env.MONGO_URI)
 .then(()=>{
-    console.log("MongoDB Connected");
+
+    console.log("MongoDB Connected Successfully");
+
 })
-.catch((err)=>{
-    console.log(err.message);
+.catch((error)=>{
+
+    console.log("MongoDB Connection Error");
+    console.log(error.message);
+
 });
 
+
+
+
+// ======================================
+// CORS TEST ROUTE
+// ======================================
 
 app.get("/cors-test",(req,res)=>{
 
     res.json({
+
+        success:true,
         origin:req.headers.origin,
-        message:"CORS test working"
+        message:"CORS Working Successfully"
+
     });
 
 });
-// ===============================
-// Routes
-// ===============================
-
-const authRoutes = require("./routes/auth");
-
-app.use("/api/auth", authRoutes);
 
 
 
-// Other routes if available
+
+// ======================================
+// DEFAULT ROUTE
+// ======================================
+
+app.get("/",(req,res)=>{
+
+    res.json({
+
+        success:true,
+        message:"Coffee Shop Backend Running"
+
+    });
+
+});
+
+
+
+
+// ======================================
+// API ROUTES
+// ======================================
+
+app.use(
+    "/api/auth",
+    require("./routes/auth")
+);
+
+
+// Add other routes later
 // app.use("/api/products", require("./routes/products"));
 // app.use("/api/orders", require("./routes/orders"));
 // app.use("/api/messages", require("./routes/messages"));
 
 
 
-// ===============================
-// Test Route
-// ===============================
 
-app.get("/",(req,res)=>{
 
-    res.json({
-        success:true,
-        message:"Coffee Shop Backend Running"
+// ======================================
+// 404 ROUTE
+// ======================================
+
+app.use((req,res)=>{
+
+    res.status(404).json({
+
+        success:false,
+        message:"Route Not Found"
+
     });
 
 });
 
 
 
-// ===============================
-// Error Handler
-// ===============================
+
+// ======================================
+// ERROR HANDLER
+// ======================================
 
 app.use((err,req,res,next)=>{
 
+
     console.log(err);
+
 
     res.status(500).json({
 
         success:false,
-        message:err.message
+        message:"Internal Server Error"
 
     });
+
 
 });
 
 
 
-// ===============================
-// Server
-// ===============================
+
+// ======================================
+// START SERVER
+// ======================================
 
 const PORT = process.env.PORT || 5000;
 
