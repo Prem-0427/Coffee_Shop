@@ -4,7 +4,7 @@
 
 (function () {
 
-    const API = "http://localhost:5000/api/orders";
+    const API = "https://coffee-shop-backend.onrender.com/api/orders";
 
     const CART_KEY = "kindling-cart";
     const TAX_RATE = 0.08;

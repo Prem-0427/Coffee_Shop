@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api/admin";
+const API = "https://coffee-shop-backend.onrender.com/api/admin";
 
 const token = localStorage.getItem("adminToken");
 
