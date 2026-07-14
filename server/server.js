@@ -1,35 +1,47 @@
-// ===============================
-// Coffee Shop Backend Server
-// ===============================
-
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 
-
-// Load Environment Variables
 dotenv.config();
 
-
-// Initialize Express
 const app = express();
 
 
 // ===============================
-// CORS Configuration
+// CORS FIX
 // ===============================
+
+const allowedOrigins = [
+    "http://localhost:5500",
+    "http://127.0.0.1:5500",
+    "https://coffee-co-coffee.netlify.app"
+];
+
 
 app.use(cors({
 
-    origin: [
-        "http://localhost:5500",
-        "http://127.0.0.1:5500",
-        "https://coffee-co-coffee.netlify.app"
-    ],
+    origin: function(origin, callback){
 
-    methods: [
+        // Allow requests without origin (Postman, mobile apps)
+        if(!origin){
+            return callback(null,true);
+        }
+
+
+        if(allowedOrigins.includes(origin)){
+            return callback(null,true);
+        }
+
+
+        return callback(new Error("Not allowed by CORS"));
+
+    },
+
+    credentials:true,
+
+    methods:[
         "GET",
         "POST",
         "PUT",
@@ -37,23 +49,20 @@ app.use(cors({
         "OPTIONS"
     ],
 
-    allowedHeaders: [
+    allowedHeaders:[
         "Content-Type",
         "Authorization"
-    ],
-
-    credentials: true
+    ]
 
 }));
 
 
-// Handle Preflight Requests (Express 5)
-app.options("/{*splat}", cors());
-
+// Express 5 preflight
+app.options("/{*any}", cors());
 
 
 // ===============================
-// Middlewares
+// Middleware
 // ===============================
 
 app.use(express.json());
@@ -67,31 +76,16 @@ app.use(cookieParser());
 
 
 // ===============================
-// Database Connection
+// MongoDB
 // ===============================
 
-const connectDB = async()=>{
-
-    try{
-
-        await mongoose.connect(process.env.MONGO_URI);
-
-        console.log("MongoDB Connected Successfully");
-
-    }
-    catch(error){
-
-        console.log("MongoDB Connection Failed");
-        console.log(error.message);
-
-        process.exit(1);
-
-    }
-
-};
-
-
-connectDB();
+mongoose.connect(process.env.MONGO_URI)
+.then(()=>{
+    console.log("MongoDB Connected");
+})
+.catch((err)=>{
+    console.log(err.message);
+});
 
 
 
@@ -104,42 +98,23 @@ const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
 
-// Products
-const productRoutes = require("./routes/products");
 
-app.use("/api/products", productRoutes);
-
-
-// Orders
-const orderRoutes = require("./routes/orders");
-
-app.use("/api/orders", orderRoutes);
-
-
-// Users
-const userRoutes = require("./routes/users");
-
-app.use("/api/users", userRoutes);
-
-
-// Messages
-const messageRoutes = require("./routes/messages");
-
-app.use("/api/messages", messageRoutes);
+// Other routes if available
+// app.use("/api/products", require("./routes/products"));
+// app.use("/api/orders", require("./routes/orders"));
+// app.use("/api/messages", require("./routes/messages"));
 
 
 
 // ===============================
-// Default Route
+// Test Route
 // ===============================
 
 app.get("/",(req,res)=>{
 
     res.json({
-
         success:true,
-        message:"Coffee Shop API Running Successfully"
-
+        message:"Coffee Shop Backend Running"
     });
 
 });
@@ -152,23 +127,21 @@ app.get("/",(req,res)=>{
 
 app.use((err,req,res,next)=>{
 
-    console.log(err.stack);
-
+    console.log(err);
 
     res.status(500).json({
 
         success:false,
-        message:"Internal Server Error"
+        message:err.message
 
     });
-
 
 });
 
 
 
 // ===============================
-// Start Server
+// Server
 // ===============================
 
 const PORT = process.env.PORT || 5000;
@@ -176,6 +149,8 @@ const PORT = process.env.PORT || 5000;
 
 app.listen(PORT,()=>{
 
-    console.log(`Server running on port ${PORT}`);
+    console.log(
+        `Server running on port ${PORT}`
+    );
 
 });
