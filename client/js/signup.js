@@ -1,76 +1,210 @@
-// ===============================
-// Coffee Shop Signup
-// ===============================
+// ===========================================
+// Kindling Coffee Co.
+// Signup Authentication
+// ===========================================
 
-const signupForm = document.getElementById("signupForm");
 
-if (signupForm) {
+const API_URL = "https://coffee-shop-uiom.onrender.com/api/auth";
 
-    const successBox = document.getElementById("signupSuccess");
 
-    signupForm.addEventListener("submit", async function (e) {
+
+const signupForm =
+document.getElementById("signupForm");
+
+
+
+if(signupForm){
+
+
+
+    const nameInput =
+    document.getElementById("signupName");
+
+
+    const emailInput =
+    document.getElementById("signupEmail");
+
+
+    const passwordInput =
+    document.getElementById("signupPassword");
+
+
+    const confirmInput =
+    document.getElementById("signupConfirm");
+
+
+    const successBox =
+    document.getElementById("signupSuccess");
+
+
+
+
+
+    signupForm.addEventListener(
+        "submit",
+        async function(e){
+
 
         e.preventDefault();
 
-        const name = document.getElementById("signupName").value.trim();
-        const email = document.getElementById("signupEmail").value.trim();
-        const password = document.getElementById("signupPassword").value;
-        const confirmPassword = document.getElementById("signupConfirm").value;
 
-        if (!name || !email || !password || !confirmPassword) {
-            alert("Please fill all fields.");
+
+
+        const name =
+        nameInput.value.trim();
+
+
+        const email =
+        emailInput.value.trim();
+
+
+        const password =
+        passwordInput.value;
+
+
+        const confirmPassword =
+        confirmInput.value;
+
+
+
+
+
+        if(
+            !name ||
+            !email ||
+            !password ||
+            !confirmPassword
+        ){
+
+            alert(
+                "Please fill all fields"
+            );
+
             return;
+
         }
 
-        if (password !== confirmPassword) {
-            alert("Passwords do not match.");
+
+
+
+
+        if(password !== confirmPassword){
+
+
+            alert(
+                "Passwords do not match"
+            );
+
             return;
+
+
         }
 
-        try {
 
-            const response = await fetch(
-                "https://coffee-shop-uiom.onrender.com/api/auth/signup",
+
+
+
+        try{
+
+
+            const response =
+            await fetch(
+                `${API_URL}/signup`,
                 {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
+
+                    method:"POST",
+
+                    headers:{
+
+                        "Content-Type":
+                        "application/json"
+
                     },
-                    body: JSON.stringify({
+
+
+                    body:JSON.stringify({
+
                         name,
+
                         email,
+
                         password
+
                     })
+
                 }
             );
 
-            const data = await response.json();
 
-            if (data.success) {
 
-                successBox.textContent = "Account Created Successfully";
+
+
+            const data =
+            await response.json();
+
+
+
+
+
+
+            if(data.success){
+
+
+
+                successBox.innerHTML =
+                "Account Created Successfully";
+
+
+
                 successBox.classList.add("show");
 
-                setTimeout(() => {
 
-                    window.location.href = "login.html";
 
-                }, 1000);
+                setTimeout(()=>{
 
-            } else {
+
+                    window.location.href =
+                    "login.html";
+
+
+                },1000);
+
+
+
+            }
+            else{
+
 
                 alert(data.message);
 
+
             }
 
-        } catch (err) {
 
-            console.log(err);
 
-            alert("Unable to connect to server.");
+
+
+        }
+        catch(error){
+
+
+
+            console.log(error);
+
+
+
+            alert(
+                "Unable to connect to server"
+            );
+
+
 
         }
 
+
+
     });
+
+
 
 }
