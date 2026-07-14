@@ -1,0 +1,1 @@
+const BASE_URL = "https://coffee-shop-backend.onrender.com";
