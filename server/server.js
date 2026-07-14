@@ -88,7 +88,14 @@ mongoose.connect(process.env.MONGO_URI)
 });
 
 
+app.get("/cors-test",(req,res)=>{
 
+    res.json({
+        origin:req.headers.origin,
+        message:"CORS test working"
+    });
+
+});
 // ===============================
 // Routes
 // ===============================
