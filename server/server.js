@@ -11,7 +11,7 @@ const mongoose = require("mongoose");
 
 // Load Environment Variables
 dotenv.config();
-
+console.log("========== NEW SERVER CODE LOADED ==========");
 
 // Create Express App
 const app = express();
