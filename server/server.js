@@ -16,7 +16,6 @@ dotenv.config();
 // Create Express App
 const app = express();
 
-console.log("========== NEW SERVER CODE LOADED ==========");
 
 // ======================================
 // CORS CONFIGURATION
