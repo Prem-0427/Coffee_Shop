@@ -1,142 +1,181 @@
+// ===============================
+// Coffee Shop Backend Server
+// ===============================
+
 const express = require("express");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
 
+
+// Load Environment Variables
 dotenv.config();
 
-// ======================
-// Database Connection
-// ======================
 
-const connectDB = require("./config/db");
-connectDB();
-
+// Initialize Express
 const app = express();
 
-// ======================
-// CORS
-// ======================
 
-const allowedOrigins = [
-    "http://localhost:5500",
-    "http://127.0.0.1:5500",
-    "https://coffee-co-coffee.netlify.app"
-];
+// ===============================
+// CORS Configuration
+// ===============================
 
 app.use(cors({
-    origin: allowedOrigins,
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"]
+
+    origin: [
+        "http://localhost:5500",
+        "http://127.0.0.1:5500",
+        "https://coffee-co-coffee.netlify.app"
+    ],
+
+    methods: [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE",
+        "OPTIONS"
+    ],
+
+    allowedHeaders: [
+        "Content-Type",
+        "Authorization"
+    ],
+
+    credentials: true
+
 }));
 
-// ======================
-// Body Parser
-// ======================
+
+// Handle Preflight Requests (Express 5)
+app.options("/{*splat}", cors());
+
+
+
+// ===============================
+// Middlewares
+// ===============================
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
-// ======================
-// Cookie Parser
-// ======================
+app.use(express.urlencoded({
+    extended:true
+}));
 
 app.use(cookieParser());
 
-// ======================
-// Debug Middleware
-// ======================
 
-app.use((req, res, next) => {
 
-    console.log("================================");
-    console.log(req.method, req.url);
-    console.log("Origin:", req.headers.origin);
-    console.log("BODY:", req.body);
-    console.log("================================");
+// ===============================
+// Database Connection
+// ===============================
 
-    next();
+const connectDB = async()=>{
 
-});
+    try{
 
-// ======================
+        await mongoose.connect(process.env.MONGO_URI);
+
+        console.log("MongoDB Connected Successfully");
+
+    }
+    catch(error){
+
+        console.log("MongoDB Connection Failed");
+        console.log(error.message);
+
+        process.exit(1);
+
+    }
+
+};
+
+
+connectDB();
+
+
+
+// ===============================
 // Routes
-// ======================
+// ===============================
 
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/products", require("./routes/product"));
-app.use("/api/cart", require("./routes/cart"));
-app.use("/api/orders", require("./routes/order"));
-app.use("/api/contact", require("./routes/contact"));
-app.use("/api/messages", require("./routes/messageRoutes"));
-app.use("/api/admin", require("./routes/admin"));
+const authRoutes = require("./routes/auth");
 
-// ======================
-// Test Route
-// ======================
+app.use("/api/auth", authRoutes);
 
-app.get("/test-cors", (req, res) => {
+
+// Products
+const productRoutes = require("./routes/products");
+
+app.use("/api/products", productRoutes);
+
+
+// Orders
+const orderRoutes = require("./routes/orders");
+
+app.use("/api/orders", orderRoutes);
+
+
+// Users
+const userRoutes = require("./routes/users");
+
+app.use("/api/users", userRoutes);
+
+
+// Messages
+const messageRoutes = require("./routes/messages");
+
+app.use("/api/messages", messageRoutes);
+
+
+
+// ===============================
+// Default Route
+// ===============================
+
+app.get("/",(req,res)=>{
 
     res.json({
 
-        success: true,
-        message: "CORS Working",
-        origin: req.headers.origin || "No Origin"
+        success:true,
+        message:"Coffee Shop API Running Successfully"
 
     });
 
 });
 
-// ======================
-// Home Route
-// ======================
 
-app.get("/", (req, res) => {
 
-    res.json({
+// ===============================
+// Error Handler
+// ===============================
 
-        success: true,
-        message: "Coffee Shop Backend Running"
+app.use((err,req,res,next)=>{
 
-    });
+    console.log(err.stack);
 
-});
 
-// ======================
-// 404
-// ======================
+    res.status(500).json({
 
-app.use((req, res) => {
-
-    res.status(404).json({
-
-        success: false,
-        message: "Route Not Found"
+        success:false,
+        message:"Internal Server Error"
 
     });
 
-});
-
-// ======================
-// MongoDB Connected
-// ======================
-
-mongoose.connection.once("open", () => {
-
-    console.log("✅ MongoDB Connected");
 
 });
 
-// ======================
+
+
+// ===============================
 // Start Server
-// ======================
+// ===============================
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
 
-    console.log(`🚀 Server running at http://localhost:${PORT}`);
+app.listen(PORT,()=>{
+
+    console.log(`Server running on port ${PORT}`);
 
 });
