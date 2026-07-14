@@ -224,7 +224,7 @@
 
       try {
 
-        const response = await fetch("https://coffee-shop-uiom.onrender.com/api/auth", {
+        const response = await fetch("https://coffee-shop-uiom.onrender.com/api/auth/login", {
 
           method: "POST",
 

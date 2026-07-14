@@ -29,7 +29,7 @@ if (signupForm) {
 
         try {
 
-            const response = await fetch("https://coffee-shop-uiom.onrender.com/api/auth", {
+            const response = await fetch("https://coffee-shop-uiom.onrender.com/api/auth/signup", {
 
                 method: "POST",
 
