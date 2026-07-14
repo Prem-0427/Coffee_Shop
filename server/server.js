@@ -16,15 +16,29 @@ const app = express();
 // Middlewares
 // =====================
 
+const allowedOrigins = [
+    "http://127.0.0.1:5500",
+    "http://localhost:5500",
+    "https://coffee-co-coffee.netlify.app"
+];
+
 app.use(cors({
-    origin: [
-        "http://127.0.0.1:5500",
-        "http://localhost:5500",
-        "https://coffee-shop-client.netlify.app",
-        "https://coffee-shop-admin.netlify.app"
-    ],
+    origin: function (origin, callback) {
+
+        // Allow requests with no origin (Postman, mobile apps, etc.)
+        if (!origin) return callback(null, true);
+
+        if (allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     credentials: true
 }));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // VERY IMPORTANT
 app.use(express.json());
