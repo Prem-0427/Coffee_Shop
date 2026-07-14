@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Coffee Co. — Small-batch coffee, brewed with intent</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/darkmode.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <span class="mark">P</span>
+        Coffee Co.
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">&#9776;</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="darkToggle" aria-label="Toggle dark mode">&#9789;</button>
+        <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">&#9825;</a>
+        <a href="cart.html" class="icon-btn" aria-label="Cart">
+          &#128722;
+          <span class="badge" id="cartBadge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="ticket-tag">NO. 001 &middot; SMALL-BATCH ROASTER</span>
+        <h1>Coffee, poured<br>with <em>intent</em>.</h1>
+        <p class="lede">We roast in small batches twice a week, pull every shot to order, and keep the menu short on
+          purpose &mdash; so what's on it is worth drinking.</p>
+        <div class="hero-actions">
+          <a href="menu.html" class="btn btn-primary">View the menu</a>
+          <a href="about.html" class="btn btn-outline">Our story</a>
+        </div>
+      </div>
+
+      <div class="hero-figure" style="background-color: rgb(27, 27, 4);">
+        <img src="images/hero.png" alt="Espresso being pulled at the  counter">
+        <div class="stub" style="color: rgb(175, 37, 37);">
+          <b>Today's roast</b>
+          Ethiopia Guji &middot; Light
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="wrap">
+      <div class="feature">
+        <span class="num">01</span>
+        <h3>Roasted Tuesdays</h3>
+        <p>Every bag is roasted within eight days of your order, never longer.</p>
+      </div>
+      <div class="feature">
+        <span class="num">02</span>
+        <h3>Direct-trade beans</h3>
+        <p>We buy straight from three family farms and pay well above market.</p>
+      </div>
+      <div class="feature">
+        <span class="num">03</span>
+        <h3>Order ahead, skip the line</h3>
+        <p>Build your order online and pick it up whenever suits you.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="promo">
+    <div class="wrap">
+      <span class="ticket-tag">ONLINE ONLY</span>
+      <h2>Fifteen drinks. No filler.</h2>
+      <p>Hot, cold, and dessert menus &mdash; each one built around beans we'd actually serve to our own regulars.</p>
+      <a href="menu.html" class="btn btn-primary">Browse the menu</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo">
+            <span class="mark">K</span>
+            Coffee Co.
+          </a>
+          <p>A small roastery and counter, open daily. Order online, pick up in-store.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="login.html">Log in</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Coffee Co.</span>
+        <span>Made with care, brewed with intent.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/darkmode.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+
+</html>

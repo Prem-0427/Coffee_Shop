@@ -1,0 +1,134 @@
+/* ===================================================
+   Auth pages — login & signup, split panel layout
+   =================================================== */
+
+.auth-shell {
+  min-height: calc(100vh - 77px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.auth-side {
+  background: var(--ink);
+  color: #FBF8F1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px;
+}
+
+.dark .auth-side { background: #0F0B08; }
+
+.auth-side .ticket-tag {
+  border-color: var(--copper);
+  color: var(--copper);
+  margin-bottom: 24px;
+}
+
+.auth-side h2 {
+  color: #FBF8F1;
+  font-size: 34px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  max-width: 380px;
+}
+
+.auth-side p {
+  color: #C9BFAF;
+  max-width: 360px;
+  font-size: 15px;
+}
+
+.auth-form-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 32px;
+  background: var(--bg);
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 380px;
+}
+
+.auth-form h1 {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.auth-form .sub {
+  color: var(--ink-soft);
+  font-size: 15px;
+  margin-bottom: 32px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--ink);
+}
+
+.field input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.field input:focus { border-color: var(--copper); }
+
+.field input.invalid { border-color: #A32D2D; }
+
+.field .error-msg {
+  display: none;
+  font-size: 13px;
+  color: #A32D2D;
+  margin-top: 6px;
+}
+
+.field.has-error .error-msg { display: block; }
+.field.has-error input { border-color: #A32D2D; }
+
+.auth-form .btn {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.auth-form .form-note {
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin-top: 24px;
+}
+
+.auth-form .form-note a {
+  color: var(--copper-dark);
+  font-weight: 600;
+}
+
+.form-success {
+  display: none;
+  background: var(--surface);
+  border: 1px dashed var(--olive);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  font-size: 14px;
+  color: var(--olive);
+  margin-bottom: 20px;
+  font-family: var(--font-mono);
+}
+
+.form-success.show { display: block; }

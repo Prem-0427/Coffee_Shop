@@ -1,0 +1,17 @@
+/* ===================================================
+   Dark mode — component tweaks beyond the CSS variables
+   in style.css (:root vs .dark already handles color).
+   =================================================== */
+
+.dark .hero-figure .stub {
+  box-shadow: 2px 3px 0 rgba(0, 0, 0, 0.5);
+}
+
+.dark .icon-btn {
+  color: var(--ink);
+}
+
+.dark ::selection {
+  background: var(--copper);
+  color: #17120D;
+}

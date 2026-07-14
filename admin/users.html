@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Users | Coffee Co.</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2>Coffee Admin</h2>
+
+        <ul>
+
+            <li><a href="dashboard.html">Dashboard</a></li>
+
+            <li><a href="users.html" class="active">Users</a></li>
+
+            <li><a href="products.html">Products</a></li>
+
+            <li><a href="orders.html">Orders</a></li>
+
+            <li><a href="messages.html">Messages</a></li>
+
+            <li><a href="#" onclick="logout()">Logout</a></li>
+
+        </ul>
+
+    </div>
+
+    <!-- Main -->
+
+    <div class="main">
+
+        <h1>Users Management</h1>
+
+        <input
+            type="text"
+            id="searchUser"
+            placeholder="Search User..."
+            onkeyup="searchUser()"
+        >
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Name</th>
+
+                    <th>Email</th>
+
+                    <th>Role</th>
+
+                    <th>Joined</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="userTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+ <script src="js/checkAdmin.js"></script>
+<script src="js/users.js"></script>
+
+</body>
+
+</html>

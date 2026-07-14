@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In — Coffee Co.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/darkmode.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <span class="mark">P</span>
+        Coffee Co.
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">&#9776;</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="darkToggle" aria-label="Toggle dark mode">&#9789;</button>
+        <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">&#9825;</a>
+        <a href="cart.html" class="icon-btn" aria-label="Cart">
+          &#128722;
+          <span class="badge" id="cartBadge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="auth-shell">
+    <div class="auth-side">
+      <span class="ticket-tag">MEMBERS ORDER FASTER</span>
+      <h2>Save your usual, skip the line next time.</h2>
+      <p>Sign in to keep your wishlist, reorder in a tap, and pick up without waiting at the counter.</p>
+    </div>
+
+    <div class="auth-form-panel">
+      <form class="auth-form" id="loginForm" novalidate>
+        <h1>Log in</h1>
+        <p class="sub">Welcome back to.</p>
+
+        <div class="form-success" id="loginSuccess"></div>
+
+        <div class="field" id="loginEmailField">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" placeholder="Enter your mail..." autocomplete="email">
+          <span class="error-msg"></span>
+        </div>
+
+        <div class="field" id="loginPasswordField">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" placeholder="Enter your password" autocomplete="current-password">
+          <span class="error-msg"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Log in</button>
+
+        <p class="form-note">New here? <a href="signup.html">Create an account</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/darkmode.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/login.js"></script>
+</body>
+
+</html>

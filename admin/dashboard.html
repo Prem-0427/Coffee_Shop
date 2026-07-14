@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Coffee Co.</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>Coffee Admin</h2>
+
+    <ul>
+
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+
+        <li><a href="users.html">Users</a></li>
+
+        <li><a href="products.html">Products</a></li>
+
+        <li><a href="orders.html">Orders</a></li>
+
+        <li><a href="messages.html">Messages</a></li>
+
+        <li><a href="#" onclick="adminLogout()">Logout</a></li>
+
+    </ul>
+
+</div>
+
+<div class="main">
+
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>Total Users</h3>
+            <h2 id="usersCount">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Total Products</h3>
+            <h2 id="productsCount">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Total Orders</h3>
+            <h2 id="ordersCount">0</h2>
+        </div>
+
+        <div class="card">
+            <h3>Messages</h3>
+            <h2 id="messagesCount">0</h2>
+        </div>
+
+    </div>
+
+    <div class="table-box">
+
+        <h2>Recent Orders</h2>
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Customer</th>
+
+                    <th>Total</th>
+
+                    <th>Status</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="recentOrders">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="js/checkAdmin.js"></script>
+<script src="js/dashboard.js"></script>
+
+</body>
+</html>

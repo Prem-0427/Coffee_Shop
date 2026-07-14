@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Orders | Coffee Admin</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <h2>Coffee Admin</h2>
+
+    <ul>
+
+        <li><a href="dashboard.html">Dashboard</a></li>
+
+        <li><a href="users.html">Users</a></li>
+
+        <li><a href="products.html">Products</a></li>
+
+        <li><a class="active" href="orders.html">Orders</a></li>
+
+        <li><a href="messages.html">Messages</a></li>
+
+        <li><a href="#" onclick="adminLogout()">Logout</a></li>
+
+    </ul>
+
+</div>
+
+<div class="main">
+
+    <h1>Manage Orders</h1>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Customer</th>
+
+                    <th>Email</th>
+
+                    <th>Pickup Time</th>
+
+                    <th>Total</th>
+
+                    <th>Status</th>
+
+                    <th>Payment</th>
+
+                    <th>Items</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody id="orderTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<script src="js/adminAuth.js"></script>
+
+<script src="js/orders.js"></script>
+
+</body>
+
+</html>

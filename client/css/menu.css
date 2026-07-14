@@ -1,0 +1,237 @@
+/* ===================================================
+   Menu page — category tabs + ticket-style product cards
+   =================================================== */
+
+.menu-header {
+  padding: 56px 0 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.menu-header .ticket-tag { margin-bottom: 18px; }
+
+.menu-header h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.menu-header p {
+  color: var(--ink-soft);
+  max-width: 520px;
+  margin: 0;
+}
+
+/* ---------- toolbar (tabs + search) ---------- */
+.menu-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 0;
+  flex-wrap: wrap;
+}
+
+.menu-toolbar .menu-tabs { padding: 0; }
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 16px;
+  min-width: 220px;
+  background: var(--surface);
+}
+
+.search-box .search-icon {
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.search-box input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--ink);
+  width: 100%;
+}
+
+.search-box input::placeholder { color: var(--ink-soft); }
+
+/* ---------- category tabs ---------- */
+.menu-tabs {
+  display: flex;
+  gap: 10px;
+  padding: 24px 0;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 14px;
+  padding: 9px 18px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink-soft);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.tab-btn:hover {
+  border-color: var(--copper);
+  color: var(--ink);
+}
+
+.tab-btn.active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+/* ---------- grid ---------- */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  padding: 12px 0 80px;
+}
+
+/* ---------- ticket card (signature element, recurring) ---------- */
+.coffee-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.coffee-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(36, 28, 21, 0.1);
+}
+
+.coffee-card .thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.coffee-card .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.coffee-card .wish-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(251, 248, 241, 0.92);
+  color: var(--ink);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.coffee-card .wish-btn.active {
+  color: #C1372E;
+}
+
+.coffee-card .body {
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+}
+
+/* perforation strip — the "torn ticket" detail */
+.coffee-card .body::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  border-top: 1px dashed var(--line);
+}
+
+.coffee-card .row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 12px;
+  margin-bottom: 6px;
+}
+
+.coffee-card h3 {
+  font-size: 18px;
+}
+
+.coffee-card .price {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--copper-dark);
+  white-space: nowrap;
+}
+
+.coffee-card .desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+  flex: 1;
+}
+
+.coffee-card .rating {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-soft);
+  margin-bottom: 14px;
+}
+
+.coffee-card .rating .star { color: var(--copper); }
+
+.coffee-card .add-btn {
+  width: 100%;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 11px;
+  border-radius: var(--radius);
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.coffee-card .add-btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.coffee-card .add-btn.added {
+  background: var(--olive);
+  border-color: var(--olive);
+  color: #FBF8F1;
+}
+
+.menu-empty {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 0;
+  color: var(--ink-soft);
+}

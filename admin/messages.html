@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>Coffee Admin</h2>
+
+        <ul>
+
+            <li><a href="dashboard.html">Dashboard</a></li>
+
+            <li><a href="users.html">Users</a></li>
+
+            <li><a href="products.html">Products</a></li>
+
+            <li><a href="orders.html">Orders</a></li>
+
+            <li><a href="messages.html" class="active">Messages</a></li>
+
+            <li><a href="#" onclick="logout()">Logout</a></li>
+
+        </ul>
+
+    </div>
+
+    <div class="main">
+
+        <h1>Customer Messages</h1>
+
+        <table>
+
+            <thead>
+
+
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Subject</th>
+                    <th>Message</th>
+                    <th>Action</th>
+                </tr>
+
+
+            </thead>
+
+            <tbody id="messageTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script src="js/checkAdmin.js"></script>
+    <script src="js/messages.js"></script>
+
+</body>
+
+</html>

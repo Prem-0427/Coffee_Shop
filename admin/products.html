@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Products | Coffee Admin</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2>Coffee Admin</h2>
+
+        <ul>
+
+            <li><a href="dashboard.html">Dashboard</a></li>
+
+            <li><a href="users.html">Users</a></li>
+
+            <li><a class="active" href="products.html">Products</a></li>
+
+            <li><a href="orders.html">Orders</a></li>
+
+            <li><a href="messages.html">Messages</a></li>
+
+            <li><a href="#" onclick="adminLogout()">Logout</a></li>
+
+        </ul>
+
+    </div>
+
+    <!-- Main -->
+
+    <div class="main">
+
+        <h1>Manage Coffee Products</h1>
+
+        <div class="card">
+
+            <h2>Add New Coffee</h2>
+
+            <form id="productForm" autocomplete="off">
+
+                <input
+                    type="hidden"
+                    id="productId"
+                    name="productId">
+
+                <div class="row">
+
+                    <div class="field">
+
+                        <label for="name">Coffee Name</label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            autocomplete="off"
+                            placeholder="Coffee Name"
+                            required>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="category">Category</label>
+
+                        <select
+                            id="category"
+                            name="category"
+                            autocomplete="off">
+
+                            <option value="Hot Coffee">Hot Coffee</option>
+                            <option value="Cold Coffee">Cold Coffee</option>
+                            <option value="Espresso">Espresso</option>
+                            <option value="Tea">Tea</option>
+                            <option value="Dessert">Dessert</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="field">
+
+                        <label for="price">Price</label>
+
+                        <input
+                            type="number"
+                            id="price"
+                            name="price"
+                            autocomplete="off"
+                            placeholder="199"
+                            required>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="image">Image Path</label>
+
+                        <input
+                            type="text"
+                            id="image"
+                            name="image"
+                            autocomplete="off"
+                            placeholder="images/latte.png"
+                            required>
+
+                    </div>
+
+                </div>
+
+                <div class="field">
+
+                    <label for="description">Description</label>
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        rows="4"
+                        autocomplete="off"
+                        placeholder="Coffee Description"
+                        required></textarea>
+
+                </div>
+
+                <div class="field">
+
+                    <label>
+
+                        <input
+                            type="checkbox"
+                            id="available"
+                            name="available"
+                            checked>
+
+                        Available
+
+                    </label>
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="save-btn">
+
+                    Save Product
+
+                </button>
+
+                <button
+                    type="reset"
+                    class="cancel-btn">
+
+                    Clear
+
+                </button>
+
+            </form>
+
+        </div>
+
+        <hr>
+
+        <h2>All Products</h2>
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody id="productTable">
+                    </tbody>
+
+            </table>
+
+        </div>
+
+        <!-- ============================= -->
+        <!-- Edit Product Modal -->
+        <!-- ============================= -->
+
+        <div id="editModal" class="modal">
+
+            <div class="modal-content">
+
+                <span
+                    id="closeModal"
+                    class="close">&times;</span>
+
+                <h2>Edit Product</h2>
+
+                <form id="editForm" autocomplete="off">
+
+                    <input
+                        type="hidden"
+                        id="editId"
+                        name="editId">
+
+                    <div class="field">
+
+                        <label for="editName">
+                            Coffee Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="editName"
+                            name="editName"
+                            autocomplete="off"
+                            required>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="editCategory">
+                            Category
+                        </label>
+
+                        <select
+                            id="editCategory"
+                            name="editCategory"
+                            autocomplete="off">
+
+                            <option value="Hot Coffee">Hot Coffee</option>
+                            <option value="Cold Coffee">Cold Coffee</option>
+                            <option value="Espresso">Espresso</option>
+                            <option value="Tea">Tea</option>
+                            <option value="Dessert">Dessert</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="editPrice">
+                            Price (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="editPrice"
+                            name="editPrice"
+                            autocomplete="off"
+                            required>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="editImage">
+                            Image Path
+                        </label>
+
+                        <input
+                            type="text"
+                            id="editImage"
+                            name="editImage"
+                            autocomplete="off"
+                            required>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label for="editDescription">
+                            Description
+                        </label>
+
+                        <textarea
+                            id="editDescription"
+                            name="editDescription"
+                            rows="4"
+                            autocomplete="off"
+                            required></textarea>
+
+                    </div>
+
+                    <div class="field">
+
+                        <label>
+
+                            <input
+                                type="checkbox"
+                                id="editAvailable"
+                                name="editAvailable">
+
+                            Available
+
+                        </label>
+
+                    </div>
+
+                    <button
+                        type="submit"
+                        class="save-btn">
+
+                        Update Product
+
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+            </div>
+    <!-- End Main -->
+
+    <!-- ============================= -->
+    <!-- JavaScript Files -->
+    <!-- ============================= -->
+
+    <script src="js/adminAuth.js"></script>
+
+    <script src="js/products.js"></script>
+
+</body>
+
+</html>

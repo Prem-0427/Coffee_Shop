@@ -1,0 +1,97 @@
+/* ===================================================
+   Responsive — mobile & tablet breakpoints
+   =================================================== */
+
+@media (max-width: 900px) {
+  .hero .wrap {
+    grid-template-columns: 1fr;
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+
+  .hero-figure { order: -1; max-width: 420px; }
+
+  .hero h1 { font-size: 40px; }
+
+  .features .wrap {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 32px;
+  }
+}
+
+@media (max-width: 720px) {
+  .nav-toggle { display: block; }
+
+  .nav-links {
+    position: absolute;
+    top: 76px;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  .nav-links.open { max-height: 300px; }
+
+  .nav-links li { width: 100%; }
+
+  .nav-links a {
+    display: block;
+    padding: 16px 32px;
+  }
+
+  .nav-links a.active::after { display: none; }
+
+  .footer-grid { grid-template-columns: 1fr; }
+
+  .footer-bottom { flex-direction: column; gap: 8px; }
+}
+
+@media (max-width: 480px) {
+  .wrap { padding: 0 20px; }
+  .hero h1 { font-size: 32px; }
+  .promo h2 { font-size: 26px; }
+}
+
+@media (max-width: 900px) {
+  .auth-shell { grid-template-columns: 1fr; }
+  .auth-side { padding: 40px 32px; }
+  .auth-side h2 { font-size: 26px; }
+}
+
+@media (max-width: 900px) {
+  .cart-layout { grid-template-columns: 1fr; }
+  .receipt { position: static; }
+
+  .cart-item {
+    grid-template-columns: 64px 1fr auto;
+    grid-template-areas:
+      "thumb info total"
+      "qty qty qty"
+      "remove remove remove";
+    row-gap: 10px;
+  }
+  .cart-item .thumb { grid-area: thumb; width: 64px; height: 64px; }
+  .cart-item .info { grid-area: info; }
+  .cart-item .line-total { grid-area: total; }
+  .cart-item .qty-control { grid-area: qty; justify-self: start; }
+  .cart-item .remove-btn { grid-area: remove; }
+
+  .menu-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .menu-grid { grid-template-columns: 1fr; }
+  .menu-toolbar { flex-direction: column; align-items: stretch; }
+  .search-box { min-width: 0; }
+}

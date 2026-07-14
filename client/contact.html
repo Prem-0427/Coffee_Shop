@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Coffee Co.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/darkmode.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      padding: 64px 0 80px;
+    }
+
+    .contact-info h1 {
+      font-size: 38px;
+      margin-bottom: 16px;
+    }
+
+    .contact-info p {
+      color: var(--ink-soft);
+      margin-bottom: 28px;
+      max-width: 420px;
+    }
+
+    .info-row {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .info-row .label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--copper-dark);
+      min-width: 90px;
+      padding-top: 2px;
+    }
+
+    .info-row .value {
+      color: var(--ink);
+      font-size: 15px;
+    }
+
+    .contact-form-wrap {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 32px;
+    }
+
+    .contact-form-wrap textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--ink);
+      font-family: var(--font-body);
+      font-size: 15px;
+      outline: none;
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .contact-form-wrap textarea:focus {
+      border-color: var(--copper);
+    }
+
+    @media (max-width: 800px) {
+      .contact-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <span class="mark">P</span>
+        Coffee Co.
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">&#9776;</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="darkToggle" aria-label="Toggle dark mode">&#9789;</button>
+        <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">&#9825;</a>
+        <a href="cart.html" class="icon-btn" aria-label="Cart">
+          &#128722;
+          <span class="badge" id="cartBadge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <section>
+    <div class="wrap contact-layout">
+      <div class="contact-info">
+        <span class="ticket-tag">GET IN TOUCH</span>
+        <h1 style="margin-top:18px;">Questions, catering, or just say hi.</h1>
+        <p>We read every message ourselves, usually within a day.</p>
+
+        <div class="info-row"><span class="label">ADDRESS</span><span class="value">BTM stage 2,Bengalure</span>
+        </div>
+        <div class="info-row"><span class="label">HOURS</span><span class="value">Mon&ndash;Fri 7am&ndash;5pm,
+            Sat&ndash;Sun 8am&ndash;4pm</span></div>
+        <div class="info-row"><span class="label">EMAIL</span><span class="value">coffeCoe.@gmail.com</span></div>
+        <div class="info-row"><span class="label">PHONE</span><span class="value">344-014-2231</span></div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <div class="form-success" id="contactSuccess">Message sent. We'll get back to you soon.</div>
+        <form id="contactForm" novalidate>
+          <div class="field" id="contactNameField">
+            <label for="contactName">Name</label>
+            <input type="text" id="contactName" placeholder="Enter your name..." autocomplete="name">
+            <span class="error-msg"></span>
+          </div>
+          <div class="field" id="contactEmailField">
+            <label for="contactEmail">Email</label>
+            <input type="email" id="contactEmail" placeholder="Enter your mail..." autocomplete="email">
+            <span class="error-msg"></span>
+          </div>
+          <div class="field" id="contactMessageField">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" placeholder="How can we help?"></textarea>
+            <span class="error-msg"></span>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;">Send message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="logo">
+            <span class="mark">K</span>
+            Coffee Co.
+          </a>
+          <p>A small roastery and counter, open daily. Order online, pick up in-store.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="wishlist.html">Wishlist</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <li><a href="login.html">Log in</a></li>
+            <li><a href="signup.html">Sign up</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Coffee Co.</span>
+        <span>Made with care, brewed with intent.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/darkmode.js"></script>
+  <script src="js/app.js"></script>
+
+  <script src="js/darkmode.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/contact.js"></script>
+
+
+</body>
+
+</html>

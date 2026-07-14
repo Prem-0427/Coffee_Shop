@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up — Coffee Co.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/auth.css">
+  <link rel="stylesheet" href="css/darkmode.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="wrap">
+      <a href="index.html" class="logo">
+        <span class="mark">P</span>
+        Coffee Co.
+      </a>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Open menu">&#9776;</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="darkToggle" aria-label="Toggle dark mode">&#9789;</button>
+        <a href="wishlist.html" class="icon-btn" aria-label="Wishlist">&#9825;</a>
+        <a href="cart.html" class="icon-btn" aria-label="Cart">
+          &#128722;
+          <span class="badge" id="cartBadge">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <div class="auth-shell">
+    <div class="auth-side">
+      <span class="ticket-tag">NO. 002 &middot; JOIN UP</span>
+      <h2>Fifteen drinks. One tab worth keeping open.</h2>
+      <p>Create an account to save your wishlist and check out faster next time you're craving something specific.</p>
+    </div>
+
+    <div class="auth-form-panel">
+      <form class="auth-form" id="signupForm" novalidate>
+        <h1>Create an account</h1>
+        <p class="sub">Takes about thirty seconds.</p>
+
+        <div class="form-success" id="signupSuccess"></div>
+
+        <div class="field" id="signupNameField">
+          <label for="signupName">Full name</label>
+          <input type="text" id="signupName" placeholder="Enter your full name..." autocomplete="name">
+          <span class="error-msg"></span>
+        </div>
+
+        <div class="field" id="signupEmailField">
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email">
+          <span class="error-msg"></span>
+        </div>
+
+        <div class="field" id="signupPasswordField">
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" placeholder="At least 8 characters" autocomplete="new-password">
+          <span class="error-msg"></span>
+        </div>
+
+        <div class="field" id="signupConfirmField">
+          <label for="signupConfirm">Confirm password</label>
+          <input type="password" id="signupConfirm" placeholder="Re-enter your password" autocomplete="new-password">
+          <span class="error-msg"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create account</button>
+
+        <p class="form-note">Already have an account? <a href="login.html">Log in</a></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/darkmode.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/login.js"></script>
+</body>
+
+</html>

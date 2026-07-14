@@ -1,0 +1,230 @@
+/* ===================================================
+   Cart page — item list + receipt-style summary
+   =================================================== */
+
+.cart-header {
+  padding: 56px 0 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.cart-header .ticket-tag { margin-bottom: 18px; }
+.cart-header h1 { font-size: 40px; }
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 40px;
+  padding: 40px 0 80px;
+  align-items: start;
+}
+
+/* ---------- cart items ---------- */
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 84px 1fr auto auto;
+  align-items: center;
+  gap: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+}
+
+.cart-item .thumb {
+  width: 84px;
+  height: 84px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.cart-item .thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart-item .info h3 {
+  font-size: 17px;
+  margin-bottom: 4px;
+}
+
+.cart-item .info .unit-price {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.qty-control {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.qty-control button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.qty-control button:hover { background: var(--bg); }
+
+.qty-control .qty-val {
+  min-width: 30px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.cart-item .line-total {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--copper-dark);
+  text-align: right;
+  min-width: 70px;
+}
+
+.cart-item .remove-btn {
+  grid-column: 1 / -1;
+  justify-self: end;
+  background: none;
+  border: none;
+  color: var(--ink-soft);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cart-item .remove-btn:hover { color: #A32D2D; }
+
+.cart-empty {
+  text-align: center;
+  padding: 80px 0;
+  color: var(--ink-soft);
+}
+
+.cart-empty a { color: var(--copper-dark); font-weight: 600; }
+
+/* ---------- receipt summary (signature element) ---------- */
+.receipt {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px 26px;
+  position: sticky;
+  top: 96px;
+}
+
+.receipt h3 {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 18px;
+}
+
+.receipt .row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: var(--ink-soft);
+}
+
+.receipt .row span:last-child { color: var(--ink); }
+
+.receipt hr {
+  border: none;
+  border-top: 1px dashed var(--line);
+  margin: 16px 0;
+}
+
+.receipt .row.total {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 22px;
+}
+
+.receipt .row.total span:last-child { color: var(--copper-dark); }
+
+.receipt .btn { width: 100%; text-align: center; }
+
+/* ---------- checkout ---------- */
+.checkout-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 40px 0 80px;
+  align-items: start;
+}
+
+.checkout-form-panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 28px 26px;
+}
+
+.checkout-form-panel h3 {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 20px;
+}
+
+.checkout-confirm {
+  display: none;
+  text-align: center;
+  padding: 60px 24px;
+  border: 1px dashed var(--copper);
+  border-radius: 10px;
+  background: var(--surface);
+}
+
+.checkout-confirm.show { display: block; }
+
+.checkout-confirm .stamp {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--olive);
+  border: 1px solid var(--olive);
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.checkout-confirm h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.checkout-confirm p {
+  color: var(--ink-soft);
+  margin-bottom: 6px;
+}
+
+.checkout-confirm .order-number {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  color: var(--copper-dark);
+  margin: 16px 0;
+}
+
+.checkout-confirm .btn { margin-top: 24px; }
